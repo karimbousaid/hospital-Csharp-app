@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ImpressionRDV" targetNamespace="http://tempuri.org/ImpressionRDV.xsd" xmlns:mstns="http://tempuri.org/ImpressionRDV.xsd" xmlns="http://tempuri.org/ImpressionRDV.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="FirstProjetConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="FirstProjetConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.NewProjectHopital5.Properties.Settings.GlobalReference.Default.FirstProjetConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="FirstProjetConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        dbo.Patient.*, RDV.NumRDV,RDV.[DateRDV], dbo.servicee.TypeService, dbo.Medecin.NomMedecin,dbo.EtatDePassment.EtatD
+FROM            dbo.Patient INNER JOIN
+                         dbo.EtatDePassment ON dbo.Patient.CodePatient = dbo.EtatDePassment.CodePatient INNER JOIN
+                         dbo.RDV ON dbo.Patient.CodePatient = dbo.RDV.CodePatient AND dbo.EtatDePassment.NumRDV = dbo.RDV.NumRDV INNER JOIN
+                         dbo.Medecin ON dbo.RDV.CodeMedecin = dbo.Medecin.CodeMedecin INNER JOIN
+                         dbo.servicee ON dbo.Medecin.IdService = dbo.servicee.IdService </CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CodePatient" DataSetColumn="CodePatient" />
+              <Mapping SourceColumn="NomPatient" DataSetColumn="NomPatient" />
+              <Mapping SourceColumn="PrenomPatient" DataSetColumn="PrenomPatient" />
+              <Mapping SourceColumn="SexePatient" DataSetColumn="SexePatient" />
+              <Mapping SourceColumn="DateNaissancePatient" DataSetColumn="DateNaissancePatient" />
+              <Mapping SourceColumn="AdressePatient" DataSetColumn="AdressePatient" />
+              <Mapping SourceColumn="TlfPatient" DataSetColumn="TlfPatient" />
+              <Mapping SourceColumn="NumRDV" DataSetColumn="NumRDV" />
+              <Mapping SourceColumn="DateRDV" DataSetColumn="DateRDV" />
+              <Mapping SourceColumn="TypeService" DataSetColumn="TypeService" />
+              <Mapping SourceColumn="NomMedecin" DataSetColumn="NomMedecin" />
+              <Mapping SourceColumn="EtatD" DataSetColumn="EtatD" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="FirstProjetConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="ReqAfficherTest" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="AfficherTest" GeneratorSourceName="ReqAfficherTest" GetMethodModifier="Public" GetMethodName="AfficherTest" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="AfficherTest" UserSourceName="ReqAfficherTest">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>
+SELECT        dbo.Patient.*, RDV.NumRDV,RDV.[DateRDV], dbo.servicee.TypeService, dbo.Medecin.NomMedecin,dbo.EtatDePassment.EtatD
+FROM            dbo.Patient INNER JOIN
+                         dbo.EtatDePassment ON dbo.Patient.CodePatient = dbo.EtatDePassment.CodePatient INNER JOIN
+                         dbo.RDV ON dbo.Patient.CodePatient = dbo.RDV.CodePatient AND dbo.EtatDePassment.NumRDV = dbo.RDV.NumRDV INNER JOIN
+                         dbo.Medecin ON dbo.RDV.CodeMedecin = dbo.Medecin.CodeMedecin INNER JOIN
+                         dbo.servicee ON dbo.Medecin.IdService = dbo.servicee.IdService 
+						 where EtatDePassment.[EtatD]=@v and dbo.servicee.TypeService=@v1
+						 and RDV.[DateRDV]=@v2</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="v" ColumnName="EtatD" DataSourceName="FirstProjet.dbo.EtatDePassment" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@v" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="EtatD" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="v1" ColumnName="TypeService" DataSourceName="FirstProjet.dbo.servicee" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@v1" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="TypeService" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="v2" ColumnName="DateRDV" DataSourceName="FirstProjet.dbo.RDV" DataTypeServer="date" DbType="AnsiString" Direction="Input" ParameterName="@v2" Precision="0" ProviderType="Date" Scale="0" Size="3" SourceColumn="DateRDV" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="EtatDePassmentTableAdapter" GeneratorDataComponentClassName="EtatDePassmentTableAdapter" Name="EtatDePassment" UserDataComponentName="EtatDePassmentTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="FirstProjetConnectionString (Settings)" DbObjectName="FirstProjet.dbo.EtatDePassment" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        COUNT(*) AS Expr1, EtatDePassment.EtatD
+FROM            Patient INNER JOIN
+                         RDV ON Patient.CodePatient = RDV.CodePatient INNER JOIN
+                         EtatDePassment ON Patient.CodePatient = EtatDePassment.CodePatient AND RDV.NumRDV = EtatDePassment.NumRDV
+GROUP BY EtatDePassment.EtatD, RDV.DateRDV
+HAVING        (RDV.DateRDV = @date)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="date" ColumnName="DateRDV" DataSourceName="FirstProjet.dbo.RDV" DataTypeServer="date" DbType="AnsiString" Direction="Input" ParameterName="@date" Precision="0" ProviderType="Date" Scale="0" Size="3" SourceColumn="DateRDV" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Expr1" DataSetColumn="NombrePatient" />
+              <Mapping SourceColumn="EtatD" DataSetColumn="EtatD" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ImpressionRDV" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ImpressionRDV" msprop:Generator_UserDSName="ImpressionRDV">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CodePatient" msprop:Generator_ColumnVarNameInTable="columnCodePatient" msprop:Generator_ColumnPropNameInRow="CodePatient" msprop:Generator_ColumnPropNameInTable="CodePatientColumn" msprop:Generator_UserColumnName="CodePatient">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NomPatient" msprop:Generator_ColumnVarNameInTable="columnNomPatient" msprop:Generator_ColumnPropNameInRow="NomPatient" msprop:Generator_ColumnPropNameInTable="NomPatientColumn" msprop:Generator_UserColumnName="NomPatient" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PrenomPatient" msprop:Generator_ColumnVarNameInTable="columnPrenomPatient" msprop:Generator_ColumnPropNameInRow="PrenomPatient" msprop:Generator_ColumnPropNameInTable="PrenomPatientColumn" msprop:Generator_UserColumnName="PrenomPatient" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SexePatient" msprop:Generator_ColumnVarNameInTable="columnSexePatient" msprop:Generator_ColumnPropNameInRow="SexePatient" msprop:Generator_ColumnPropNameInTable="SexePatientColumn" msprop:Generator_UserColumnName="SexePatient" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DateNaissancePatient" msprop:Generator_ColumnVarNameInTable="columnDateNaissancePatient" msprop:Generator_ColumnPropNameInRow="DateNaissancePatient" msprop:Generator_ColumnPropNameInTable="DateNaissancePatientColumn" msprop:Generator_UserColumnName="DateNaissancePatient" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="AdressePatient" msprop:Generator_ColumnVarNameInTable="columnAdressePatient" msprop:Generator_ColumnPropNameInRow="AdressePatient" msprop:Generator_ColumnPropNameInTable="AdressePatientColumn" msprop:Generator_UserColumnName="AdressePatient" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TlfPatient" msprop:Generator_ColumnVarNameInTable="columnTlfPatient" msprop:Generator_ColumnPropNameInRow="TlfPatient" msprop:Generator_ColumnPropNameInTable="TlfPatientColumn" msprop:Generator_UserColumnName="TlfPatient" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NumRDV" msprop:Generator_ColumnVarNameInTable="columnNumRDV" msprop:Generator_ColumnPropNameInRow="NumRDV" msprop:Generator_ColumnPropNameInTable="NumRDVColumn" msprop:Generator_UserColumnName="NumRDV" type="xs:int" />
+              <xs:element name="DateRDV" msprop:Generator_ColumnVarNameInTable="columnDateRDV" msprop:Generator_ColumnPropNameInRow="DateRDV" msprop:Generator_ColumnPropNameInTable="DateRDVColumn" msprop:Generator_UserColumnName="DateRDV" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TypeService" msprop:Generator_ColumnVarNameInTable="columnTypeService" msprop:Generator_ColumnPropNameInRow="TypeService" msprop:Generator_ColumnPropNameInTable="TypeServiceColumn" msprop:Generator_UserColumnName="TypeService" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NomMedecin" msprop:Generator_ColumnVarNameInTable="columnNomMedecin" msprop:Generator_ColumnPropNameInRow="NomMedecin" msprop:Generator_ColumnPropNameInTable="NomMedecinColumn" msprop:Generator_UserColumnName="NomMedecin" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EtatD" msprop:Generator_ColumnVarNameInTable="columnEtatD" msprop:Generator_ColumnPropNameInRow="EtatD" msprop:Generator_ColumnPropNameInTable="EtatDColumn" msprop:Generator_UserColumnName="EtatD" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="EtatDePassment" msprop:Generator_TableClassName="EtatDePassmentDataTable" msprop:Generator_TableVarName="tableEtatDePassment" msprop:Generator_TablePropName="EtatDePassment" msprop:Generator_RowDeletingName="EtatDePassmentRowDeleting" msprop:Generator_RowChangingName="EtatDePassmentRowChanging" msprop:Generator_RowEvHandlerName="EtatDePassmentRowChangeEventHandler" msprop:Generator_RowDeletedName="EtatDePassmentRowDeleted" msprop:Generator_UserTableName="EtatDePassment" msprop:Generator_RowChangedName="EtatDePassmentRowChanged" msprop:Generator_RowEvArgName="EtatDePassmentRowChangeEvent" msprop:Generator_RowClassName="EtatDePassmentRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NombrePatient" msdata:ReadOnly="true" msdata:Caption="Expr1" msprop:Generator_ColumnVarNameInTable="columnNombrePatient" msprop:Generator_ColumnPropNameInRow="NombrePatient" msprop:Generator_ColumnPropNameInTable="NombrePatientColumn" msprop:Generator_UserColumnName="NombrePatient" type="xs:int" minOccurs="0" />
+              <xs:element name="EtatD" msprop:Generator_ColumnVarNameInTable="columnEtatD" msprop:Generator_ColumnPropNameInRow="EtatD" msprop:Generator_ColumnPropNameInTable="EtatDColumn" msprop:Generator_UserColumnName="EtatD" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
